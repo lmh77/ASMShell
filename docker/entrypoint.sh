@@ -19,7 +19,7 @@ cat ${ASMDIR}/commands/tasks/unicom/unicom.js | sed '/\/\*\*\*/,/\*\*\*\//d' | s
 echo "已指定计划任务配置${crontab_file}，将直接使用该文件"
 /usr/bin/crontab ${crontab_file}
 echo "复制配置文件..."
-cp -f ${ASM}/config/${envfile} ${ASMDIR}/config/.env
+cp -f ${ASMShell}/config/${envfile} ${ASMDIR}/config/.env
 echo "程序启动完毕..."
 /usr/sbin/crond -S -c /var/spool/cron/crontabs -f -L /dev/stdout
 crond
