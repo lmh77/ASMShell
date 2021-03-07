@@ -52,4 +52,3 @@ echo "复制${env_file}配置至.env"
 cp -f ${ASMShell_DIR}/config/${env_file} ${Scripts_DIR}/config/.env
 echo "程序启动完毕..."
 echo "--------------------------------------$date----------------------------------------------------------"
-/usr/sbin/crond -S -c /var/spool/cron/crontabs -f -L /dev/stdout
