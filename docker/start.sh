@@ -11,16 +11,16 @@ if [ $1 ]; then
   if [ -f "${ASMShell_DIR}/scripts/AutoSignMachine.js" ]; then
     echo "仓库已经存在，跳过clone操作..."
   else
-    git clone -b ${Script_BRANCH} ${Script_URL} ${Script_DIR}
+    git clone -b ${Scripts_BRANCH} ${Scripts_URL} ${Scripts_DIR}
   fi
 fi
 
 echo "git pull拉取最新代码..."
-cd ${Script_DIR}
+cd ${Scripts_DIR}
 git pull
 
 echo "npm install 安装最新依赖"
-npm install -s --prefix ${ASMShell_DIR}/scripts >/dev/null
+npm install -s --prefix ${Scripts_DIR} >/dev/null
 function buildcron {
   JS_file=${Scripts_DIR}/commands/tasks/unicom/unicom.js
   Taskarray=(`cat ${JS_file} | sed '/\/\*\*\*/,/\*\*\*\//d' | sed '/\/\*/,/\*\//d'|sed '/\/\//d' | grep -oE "\"[a-z A-Z0-9]+\""| cut -f2 -d\"`)
@@ -39,7 +39,7 @@ function buildcron {
     echo "$min $hour * * * bash u ${Taskarray[$i]}"
   done
 }
-echo "------------------------------------------------------------------------------------------------"
+echo "--------------------------------------$date----------------------------------------------------------"
 echo "生成cron列表..."
 buildcron>${ASMShell_DIR}/config/crontab.sh
 echo "0 18 * * *  node ${Scripts_DIR}/index.js unicom --tryrun --tasks  $(echo ${Taskarray[@]}|tr "\ " ",") |ts>> /ASMShell/logs/all.txt 2>&1 &">>${ASMShell_DIR}/config/crontab.sh
@@ -50,5 +50,5 @@ echo "指定cron配置${crontab_file}"
 echo "复制${env_file}配置至.env"
 cp -f ${ASMShell_DIR}/config/${env_file} ${Scripts_DIR}/config/.env
 echo "程序启动完毕..."
-echo "------------------------------------------------------------------------------------------------"
+echo "--------------------------------------$date----------------------------------------------------------"
 /usr/sbin/crond -S -c /var/spool/cron/crontabs -f -L /dev/stdout
