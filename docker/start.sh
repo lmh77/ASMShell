@@ -12,6 +12,8 @@ if [ $1 ]; then
     echo "仓库已经存在，跳过clone操作..."
   else
     git clone -b ${Scripts_BRANCH} ${Scripts_URL} ${Scripts_DIR}
+    echo "npm install 安装最新依赖"
+    npm install -s --prefix ${Scripts_DIR} >/dev/null
   fi
 fi
 
@@ -19,8 +21,7 @@ echo "git pull拉取最新代码..."
 cd ${Scripts_DIR}
 git pull
 
-echo "npm install 安装最新依赖"
-npm install -s --prefix ${Scripts_DIR} >/dev/null
+
 function buildcron {
   JS_file=${Scripts_DIR}/commands/tasks/unicom/unicom.js
   Taskarray=(`cat ${JS_file} | sed '/\/\*\*\*/,/\*\*\*\//d' | sed '/\/\*/,/\*\//d'|sed '/\/\//d' | grep -oE "\"[a-z A-Z0-9]+\""| cut -f2 -d\"`)
