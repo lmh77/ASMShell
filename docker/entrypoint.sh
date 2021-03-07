@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 git pull
-set -e
+
 echo "设定远程仓库地址..."
 mkdir -p /root/.ssh \
     && chmod 700 /root/.ssh \
