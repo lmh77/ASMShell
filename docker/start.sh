@@ -11,20 +11,12 @@ if [ $1 ]; then
   if [ -f "${ASMShell_DIR}/scripts/AutoSignMachine.js" ]; then
     echo "仓库已经存在，跳过clone操作..."
   else
-    if [  -d ${ASMShell_DIR}/tmp ];then
-      rmdir ${ASMShell_DIR}/tmp
-    fi
-    git clone --no-checkout -b ${Script_BRANCH} ${Script_URL} ${ASMShell_DIR}/tmp
-    mv ${ASMShell_DIR}/tmp/.git ${Script_DIR}
-    rmdir ${ASMShell_DIR}/tmp
-  fi
+    git clone -b ${Script_BRANCH} ${Script_URL} ${Script_DIR}
 fi
 
 echo "git pull拉取最新代码..."
 cd ${Script_DIR}
-git reset --hard HEAD
-git fetch --all
-git reset --hard origin/${ASMShell_BRANCH}
+git pull
 
 echo "npm install 安装最新依赖"
 npm install -s --prefix ${ASMShell_DIR}/scripts >/dev/null
