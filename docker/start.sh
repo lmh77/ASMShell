@@ -12,6 +12,7 @@ if [ $1 ]; then
     echo "仓库已经存在，跳过clone操作..."
   else
     git clone -b ${Script_BRANCH} ${Script_URL} ${Script_DIR}
+  fi
 fi
 
 echo "git pull拉取最新代码..."
