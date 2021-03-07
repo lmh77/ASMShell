@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+git fetch
+git reset --hard origin/master
 git pull
 
 echo "设定远程仓库地址..."
