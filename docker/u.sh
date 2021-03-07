@@ -25,4 +25,3 @@ case $# in
     echo -e "输入命令过多..."
     ;;
 esac
-bash start>/dev/null
