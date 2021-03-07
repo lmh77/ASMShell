@@ -25,4 +25,4 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN chmod +x ${ASMShellDIR}/docker/*.sh
 WORKDIR ${ASMShellDIR}
-ENTRYPOINT ["${ASMShellDIR}/docker/entrypoint.sh"]
+ENTRYPOINT ${ASMShellDIR}/docker/entrypoint.sh
