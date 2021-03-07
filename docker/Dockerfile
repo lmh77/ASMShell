@@ -23,6 +23,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && echo "Asia/Shanghai" > /etc/timezone \
     && git clone ${ASMShellURL} ${ASMShellDIR}
 
-RUN chmod +x ${ASMShellDIR}/docker/*.sh
+RUN chmod 777 ${ASMShellDIR}/docker/*.sh
 WORKDIR ${ASMShellDIR}
 ENTRYPOINT ${ASMShellDIR}/docker/entrypoint.sh
