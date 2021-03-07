@@ -2,7 +2,12 @@
 git pull
 set -e
 echo "设定远程仓库地址..."
-mkdir -p /root/.ssh  && echo -e ${ASMKEY} > /root/.ssh/id_rsa  && chmod 700 /root/.ssh/id_rsa  && ssh-keyscan github.com > /root/.ssh/known_hosts
+mkdir -p /root/.ssh \
+    && chmod 700 /root/.ssh \
+    && cd /root/.ssh \
+    && echo -e $KEY > /root/.ssh/id_rsa \
+    && chmod 600 /root/.ssh/id_rsa \
+    && ssh-keyscan github.com > /root/.ssh/known_hosts
 [ ! -d ${ASMDIR}/.git ] && echo "git clone克隆最新代码..." && git clone -b ${ASMBRANCH} ${ASMURL} ${ASMDIR}
 cd  ${ASMDIR} && echo "git pull最新代码..." && git pull
 echo "npm install 安装最新依赖"
