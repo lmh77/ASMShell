@@ -1,6 +1,10 @@
 FROM alpine
 
-ENV ASMShell_DIR=/ASMShell \
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+    LANG=zh_CN.UTF-8 \
+    SHELL=/bin/bash \
+    PS1="\u@\h:\w \$ " \
+    ASMShell_DIR=/ASMShell \
     ASMShell_URL=https://github.com/lmh77/ASMShell \
     ASMShell_BRANCH=master \
     Scripts_DIR=/ASMShell/scripts

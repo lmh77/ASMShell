@@ -14,14 +14,14 @@ if [ $1 ]; then
     if [  -d ${ASMShell_DIR}/tmp ];then
       rmdir ${ASMShell_DIR}/tmp
     fi
-    git clone --no-checkout -b ${ASMShell_BRANCH} ${REPO_URL} ${ASMShell_DIR}/tmp
-    mv ${ASMShell_DIR}/tmp/.git ${ASMShell_DIR}/scripts
+    git clone --no-checkout -b ${Script_BRANCH} ${Script_URL} ${ASMShell_DIR}/tmp
+    mv ${ASMShell_DIR}/tmp/.git ${Script_DIR}
     rmdir ${ASMShell_DIR}/tmp
   fi
 fi
 
 echo "git pull拉取最新代码..."
-cd ${ASMShell_DIR}/scripts
+cd ${Script_DIR}
 git reset --hard HEAD
 git fetch --all
 git reset --hard origin/${ASMShell_BRANCH}
@@ -49,9 +49,9 @@ function buildcron {
 echo "------------------------------------------------------------------------------------------------"
 echo "生成cron列表..."
 buildcron>${ASMShell_DIR}/config/crontab.sh
-echo "\n0 18 * * *  node ${Scripts_DIR}/index.js unicom --tryrun --tasks  $(echo ${Taskarray[@]}|tr "\ " ",") |ts>> /ASMShell/logs/all.txt 2>&1 &">>${ASMShell_DIR}/config/crontab.sh
-echo "\n0 */4 * * * bash start">>${ASMShell_DIR}/config/crontab.sh
-echo "\n0 0 */3 * * rm -rf ${ASMShell_DIR}/logs/*.log">>${ASMShell_DIR}/config/crontab.sh
+echo "0 18 * * *  node ${Scripts_DIR}/index.js unicom --tryrun --tasks  $(echo ${Taskarray[@]}|tr "\ " ",") |ts>> /ASMShell/logs/all.txt 2>&1 &">>${ASMShell_DIR}/config/crontab.sh
+echo "0 */4 * * * bash start">>${ASMShell_DIR}/config/crontab.sh
+echo "0 0 */3 * * rm -rf ${ASMShell_DIR}/logs/*.log">>${ASMShell_DIR}/config/crontab.sh
 echo "指定cron配置${crontab_file}"
 /usr/bin/crontab ${ASMShell_DIR}/config/crontab.sh
 echo "复制${env_file}配置至.env"
