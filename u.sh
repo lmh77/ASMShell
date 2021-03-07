@@ -6,7 +6,7 @@ TaskList=(`cat ${ASMShellDIR}/config/task.list`)
 
 function Run {
     crontab ${crontab_file}
-    cp -f {ASMShellDIR}/config/${envfile} ${ASMDIR}/config/.env
+    cp -f ${ASMShellDIR}/config/${envfile} ${ASMDIR}/config/.env
     Line=$(sed -n "/\"$1\"/=" ${JS_DIR})
     cat ${JS_DIR} | sed -n $(($Line-3)),$(($Line-2))p | grep \/\/ | sed 's/[ \t]*//g'|sed 's/[\/\/\t]*//g'
     echo 
