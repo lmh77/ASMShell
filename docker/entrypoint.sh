@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-git pull
+git fetch --all
+git reset --hard origin/master
 set -e
 echo "设定远程仓库地址..."
 mkdir -p /root/.ssh  && echo -e ${ASMKEY} > /root/.ssh/id_rsa  && chmod 600 /root/.ssh/id_rsa  && ssh-keyscan github.com > /root/.ssh/known_hosts
