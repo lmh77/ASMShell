@@ -44,7 +44,7 @@ echo "--------------------------------------------------------------------------
 echo "生成cron列表..."
 buildcron>${ASMShell_DIR}/config/crontab.sh
 echo "0 18 * * *  node ${Scripts_DIR}/index.js unicom --tryrun --tasks  $(echo ${Taskarray[@]}|tr "\ " ",") |ts>> /ASMShell/logs/all.txt 2>&1 &">>${ASMShell_DIR}/config/crontab.sh
-echo "0 */4 * * * bash start>/dev/null/ 2>&1 &">>${ASMShell_DIR}/config/crontab.sh
+echo "0 */4 * * * bash start>/dev/null 2>&1 &">>${ASMShell_DIR}/config/crontab.sh
 echo "0 0 */3 * * rm -rf ${ASMShell_DIR}/logs/*.log">>${ASMShell_DIR}/config/crontab.sh
 echo "指定cron配置${crontab_file}"
 /usr/bin/crontab ${ASMShell_DIR}/config/crontab.sh
