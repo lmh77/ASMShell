@@ -3,7 +3,7 @@ git pull
 set -e
 echo "设定远程仓库地址..."
 mkdir -p /root/.ssh  && echo -e ${ASMKEY} > /root/.ssh/id_rsa  && chmod 600 /root/.ssh/id_rsa  && ssh-keyscan github.com > /root/.ssh/known_hosts
-[ !-d ${ASMDIR} ] && echo "git clone克隆最新代码..." && git clone -b ${ASMBRANCH} ${ASMURL} ${ASMDIR}
+[ ! -d ${ASMDIR} ] && echo "git clone克隆最新代码..." && git clone -b ${ASMBRANCH} ${ASMURL} ${ASMDIR}
 cd  ${ASMDIR} && echo "git pull最新代码..." && git pull
 echo "npm install 安装最新依赖"
 npm config set registry https://registry.npm.taobao.org 
