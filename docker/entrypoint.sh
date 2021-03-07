@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-ln -sf ${ASMShellDIR}/u /usr/local/bin/u
+
 git fetch
 git reset --hard origin/master
 git pull
