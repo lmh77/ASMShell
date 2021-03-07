@@ -8,7 +8,7 @@ mkdir -p /root/.ssh  && echo -e ${ASMKEY} > /root/.ssh/id_rsa  && chmod 600 /roo
 cd  ${ASMDIR} && echo "git pull最新代码..." && git pull
 echo "npm install 安装最新依赖"
 npm config set registry https://registry.npm.taobao.org 
-npm install -s --prefix ${ASM_DIR} >/dev/null
+npm install -s --prefix ${ASMDIR} >/dev/null
 echo "------------------------------------------------------------------------------------------------"
 echo "生成任务列表..."
 cat ${ASMDIR}/commands/tasks/unicom/unicom.js | sed '/\/\*\*\*/,/\*\*\*\//d' | sed '/\/\*/,/\*\//d'|sed '/\/\//d' | grep -oE "\"[a-z A-Z0-9]+\""| cut -f2 -d\">${ASMShellDIR}/config/task.list
