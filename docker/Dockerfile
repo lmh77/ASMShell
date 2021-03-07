@@ -21,7 +21,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && rm -rf /var/cache/apk/* \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
-    && git clone ${ASMShellURL} ${ASMShellDIR}
+    && git clone ${ASMShellURL} ${ASMShellDIR} \
+    && ln -sf ${ASMShellDIR}/u.sh /usr/local/bin/u
 
 RUN chmod 777 ${ASMShellDIR}/docker/*.sh
 WORKDIR ${ASMShellDIR}
