@@ -1,0 +1,22 @@
+
+name: "构建"
+on:
+  # push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: 构建镜像
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@master
+      - name: Build and publish image
+        uses: ilteoood/docker_buildx@master
+        with:
+          publish: true
+          imageName: lmhsdocker/unicom
+          dockerFile: Dockerfile
+          platform: linux/amd64,linux/arm64,linux/arm/v7
+          tag: latest
+          dockerUser: ${{ secrets.DOCKER_USERNAME }}
+          dockerPassword: ${{ secrets.DOCKER_PASSWORD }}
