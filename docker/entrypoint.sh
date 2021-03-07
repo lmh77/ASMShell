@@ -3,7 +3,7 @@ git pull
 set -e
 echo "设定远程仓库地址..."
 mkdir -p /root/.ssh  && echo -e ${ASMKEY} > /root/.ssh/id_rsa  && chmod 600 /root/.ssh/id_rsa  && ssh-keyscan github.com > /root/.ssh/known_hosts
-[ ! -d ${ASMDIR} ] && echo "git clone克隆最新代码..." && git clone -b ${ASMBRANCH} ${ASMURL} ${ASMDIR}
+[ ! -d ${ASMDIR}/.git ] && echo "git clone克隆最新代码..." && git clone -b ${ASMBRANCH} ${ASMURL} ${ASMDIR}
 cd  ${ASMDIR} && echo "git pull最新代码..." && git pull
 echo "npm install 安装最新依赖"
 npm config set registry https://registry.npm.taobao.org 
@@ -14,7 +14,7 @@ cat ${ASMDIR}/commands/tasks/unicom/unicom.js | sed '/\/\*\*\*/,/\*\*\*\//d' | s
 echo "已指定计划任务配置${crontab_file}，将直接使用该文件"
 /usr/bin/crontab ${crontab_file}
 echo "复制配置文件..."
-cp -f /config/${envfile} ${ASMDIR}/config/.env
+cp -f ${ASM}/config/${envfile} ${ASMDIR}/config/.env
 echo "程序启动完毕..."
 /usr/sbin/crond -S -c /var/spool/cron/crontabs -f -L /dev/stdout
 crond
