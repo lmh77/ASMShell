@@ -7,7 +7,6 @@ if [ $1 ]; then
     apk update
     apk --no-cache add -f coreutils moreutils nodejs npm perl openssl openssh-client libav-tools libjpeg-turbo-dev libpng-dev libtool libgomp tesseract-ocr graphicsmagick >/dev/null 2>&1
     git config --global pull.ff only
-    echo "13.250.177.223 github" >>/etc/hosts
     npm config set registry https://registry.npm.taobao.org
     echo "配置仓库更新密钥..."
     mkdir -p /root/.ssh
