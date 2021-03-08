@@ -1,5 +1,6 @@
 #!/bin/sh
 if [ $1 ]; then
+  apk update
   apk --no-cache add -f coreutils moreutils nodejs npm perl openssl openssh-client libav-tools libjpeg-turbo-dev libpng-dev libtool libgomp tesseract-ocr graphicsmagick
   npm config set registry https://registry.npm.taobao.org
   echo "配置仓库更新密钥..."
