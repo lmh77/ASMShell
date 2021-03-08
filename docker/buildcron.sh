@@ -16,7 +16,6 @@ function build {
     echo "$min $hour * * * bash u ${Taskarray[$i]}"
   done
 }
-echo "------------------------------------------------------------------------------------------------"
 echo "生成crontab.sh文件..."
 rm -rf ${ASMShell_DIR}/config/crontab.sh
 build>${ASMShell_DIR}/config/crontab.sh

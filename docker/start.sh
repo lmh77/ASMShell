@@ -21,17 +21,12 @@ fi
 echo "git pull拉取最新代码..."
 cd ${Scripts_DIR}
 git pull
-
+echo "------------------------------------------------------------------------------------------------"
 #补充
 ln -sf ${ASMShell_DIR}/docker/all.sh /usr/local/bin/all
 ln -sf ${ASMShell_DIR}/docker/buildcron.sh /usr/local/bin/buildcron
 
 bash buildcron
-
-
-
-
-
 
 echo "复制${env_file}配置至.env"
 cp -f ${ASMShell_DIR}/config/${env_file} ${Scripts_DIR}/config/.env
