@@ -1,4 +1,5 @@
 #!/bin/bash
+bash buildcron>/dev/null 2>&1 &
 echo
 Logs_DIR=${ASMShell_DIR}/logs
 JS_file=${Scripts_DIR}/commands/tasks/unicom/unicom.js
@@ -17,7 +18,9 @@ case $# in
     echo "请重新输入！"
     ;;
   1)
-    echo "${Taskarray[@]}" | grep -wq "$1" \
+    [ $1=="all" ] && bash <(bash all)\
+    ||  [ $1=="jf" ] && Run $1 \
+    ||  echo "${Taskarray[@]}" | grep -wq "$1" \
     &&  echo "即将执行任务..." && Run $1 \
     ||  echo "不存在此任务..."
     ;;
@@ -25,4 +28,4 @@ case $# in
     echo -e "输入命令过多..."
     ;;
 esac
-bash start>/dev/null 2>&1 &
+echo
