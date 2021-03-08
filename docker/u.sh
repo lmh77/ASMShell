@@ -18,9 +18,7 @@ case $# in
     echo "请重新输入！"
     ;;
   1)
-    [ $1=="all" ] && bash <(bash all)\
-    ||  [ $1=="jf" ] && Run $1 \
-    ||  echo "${Taskarray[@]}" | grep -wq "$1" \
+    echo "${Taskarray[@]}" | grep -wq "$1" \
     &&  echo "即将执行任务..." && Run $1 \
     ||  echo "不存在此任务..."
     ;;
