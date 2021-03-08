@@ -43,8 +43,9 @@ function buildcron {
 }
 echo "------------------------------------------------------------------------------------------------"
 echo "生成cron列表..."
+rm -rf ${ASMShell_DIR}/config/crontab.sh
 buildcron>${ASMShell_DIR}/config/crontab.sh
-echo "0 18 * * *  node ${Scripts_DIR}/index.js unicom --tryrun --tasks  $(echo ${Taskarray[@]}|tr "\ " ",") |ts>> /ASMShell/logs/all.txt 2>&1 &">>${ASMShell_DIR}/config/crontab.sh
+echo "0 18 * * *  bash <(bash all)">>${ASMShell_DIR}/config/crontab.sh
 echo "0 */4 * * * bash start>/dev/null 2>&1 &">>${ASMShell_DIR}/config/crontab.sh
 echo "0 0 */3 * * rm -rf ${ASMShell_DIR}/logs/*.log">>${ASMShell_DIR}/config/crontab.sh
 echo "指定cron配置${crontab_file}"
@@ -53,4 +54,6 @@ echo "复制${env_file}配置至.env"
 cp -f ${ASMShell_DIR}/config/${env_file} ${Scripts_DIR}/config/.env
 echo "程序启动完毕..."
 echo "------------------------------------------------------------------------------------------------"
+#后续增加
+ln -sf ${ASMShell_DIR}/docker/all.sh /usr/local/bin/all
 
