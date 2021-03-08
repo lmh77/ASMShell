@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     name: 构建镜像
     steps:
+      - name: set-time
+        run: sudo timedatectl set-timezone 'Asia/Shanghai'
       - name: Checkout master
         uses: actions/checkout@master
       - name: Build and publish image
@@ -17,6 +19,6 @@ jobs:
           imageName: lmhsdocker/asm
           dockerFile: docker/Dockerfile
           platform: linux/amd64,linux/arm64,linux/arm/v7
-          tag: latest
+          tag: $(date "+%Y-%m-%d-%H-%M-%S")
           dockerUser: ${{ secrets.DOCKER_USERNAME }}
           dockerPassword: ${{ secrets.DOCKER_PASSWORD }}
