@@ -17,7 +17,7 @@ if [ $1 ]; then
     npm install -s --prefix ${Scripts_DIR} >/dev/null
   fi
 fi
-
+git config --global pull.ff only
 echo "git pull拉取最新代码..."
 cd ${Scripts_DIR}
 git pull
