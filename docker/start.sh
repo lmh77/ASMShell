@@ -8,9 +8,8 @@ if [ $1 ]; then
   echo -e ${KEY} >/root/.ssh/id_rsa
   chmod 600 /root/.ssh/id_rsa
   ssh-keyscan github.com >/root/.ssh/known_hosts
-  git config --global pull.ff only
-  echo "13.250.177.223 github">>/etc/hosts
-  cat /etc/hosts | sort -u>/etc/hosts
+ 
+  
   echo "容器启动，拉取脚本仓库代码..."
   if [ -f "${ASMShell_DIR}/scripts/AutoSignMachine.js" ]; then
     echo "仓库已经存在，跳过clone操作..."
