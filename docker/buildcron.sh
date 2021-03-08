@@ -16,11 +16,16 @@ function build {
     echo "$min $hour * * * bash u ${Taskarray[$i]}"
   done
 }
-echo "生成crontab.sh文件..."
-rm -rf ${ASMShell_DIR}/config/crontab.sh
-build>${ASMShell_DIR}/config/crontab.sh
-echo "0 18 * * *  bash <(bash all)">>${ASMShell_DIR}/config/crontab.sh
-echo "0 */4 * * * bash start>/dev/null 2>&1 &">>${ASMShell_DIR}/config/crontab.sh
-echo "0 0 */3 * * rm -rf ${ASMShell_DIR}/logs/*.log">>${ASMShell_DIR}/config/crontab.sh
+echo "生成crontab.sh.sample文件..."
+build>${ASMShell_DIR}/config/crontab.sh.sample
+echo "0 15 * * *  bash <(bash all)">>${ASMShell_DIR}/config/crontab.sh
+echo "0 */4 * * * bash start">>${ASMShell_DIR}/config/crontab.sh.sample
+echo "0 0 */3 * * rm -rf ${ASMShell_DIR}/logs/*.log">>${ASMShell_DIR}/config/crontab.sh.sample
 echo "指定cron配置crontab.sh"
 /usr/bin/crontab ${ASMShell_DIR}/config/crontab.sh
+
+#判断......
+function decide {
+  cp -f ${ASMShell_DIR}/config/crontab.sh.sample ${ASMShell_DIR}/config/crontab.sh
+
+}

@@ -1,5 +1,5 @@
 #!/bin/bash
-bash buildcron>/dev/null 2>&1 &
+
 echo
 Logs_DIR=${ASMShell_DIR}/logs
 JS_file=${Scripts_DIR}/commands/tasks/unicom/unicom.js
