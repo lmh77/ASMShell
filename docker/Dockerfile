@@ -14,6 +14,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && rm -rf /var/cache/apk/* \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
+    && git config --global pull.ff only \
     && git clone -b ${ASMShell_BRANCH} ${ASMShell_URL} ${ASMShell_DIR} \
     && ln -sf ${ASMShell_DIR}/docker/start.sh /usr/local/bin/start \
     && cp -f ${ASMShell_DIR}/docker/entrypoint.sh /usr/local/bin/entrypoint.sh \
