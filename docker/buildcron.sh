@@ -23,26 +23,10 @@ echo "0 15 * * *  bash <(bash all)">>${ASMShell_DIR}/config/crontab.sh.sample
 echo "0 */4 * * * bash start">>${ASMShell_DIR}/config/crontab.sh.sample
 echo "0 0 */3 * * rm -rf ${ASMShell_DIR}/logs/*.log">>${ASMShell_DIR}/config/crontab.sh.sample
 
-#判断......
-function decide {
-  if [ -f "${ASMShell_DIR}/config/crontab.sh" ]; then
-    echo "仓库已经存在crontab.sh..."
-    diff ${ASMShell_DIR}/config/crontab.sh ${ASMShell_DIR}/config/crontab.sh.sample > /dev/null
-    if [ $? == 0 ]; then
-        echo "crontab配置文件一致..."
-    else
-        echo "crontab配置文件不一致..."
-        echo "备份原配置..."
-        cp -f ${ASMShell_DIR}/config/crontab.sh ${ASMShell_DIR}/config/crontab.sh.bak
-        echo "生成新配置..."
-        cp -f ${ASMShell_DIR}/config/crontab.sh.sample ${ASMShell_DIR}/config/crontab.sh
-    fi
-  else
-    echo "仓库没有crontab.sh..."
-    echo "复制sample生成crontab.sh..."
-    cp -f ${ASMShell_DIR}/config/crontab.sh.sample ${ASMShell_DIR}/config/crontab.sh
-  fi
-}
-decide
-echo "指定cron配置为crontab.sh"
+
+echo "备份原配置..."
+cp -f ${ASMShell_DIR}/config/crontab.sh ${ASMShell_DIR}/config/crontab.sh.bak
+echo "生成新配置..."
+cp -f ${ASMShell_DIR}/config/crontab.sh.sample ${ASMShell_DIR}/config/crontab.sh
+echo "执行新配置..."
 /usr/bin/crontab ${ASMShell_DIR}/config/crontab.sh
