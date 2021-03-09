@@ -20,7 +20,6 @@ if [ $1 ]; then
     npm install -s --prefix ${Scripts_DIR} >/dev/null 2>&1
   fi
 fi
-# cat /etc/hosts | grep github || echo "13.250.177.223 github" >>/etc/hosts && echo "52.74.223.119 github" >>/etc/hosts
 echo "<2>------------------------------------------------------------------------------------------------"
 echo "更新ASM......"
 cd ${Scripts_DIR} && git pull
@@ -34,7 +33,7 @@ ln -sf ${ASMShell_DIR}/docker/start.sh /usr/local/bin/start
 
 bash buildcron
 
-#多账号并发指定配置文件
+#多账号并发容器指定配置文件
 echo "复制${env_file}配置至.env"
 cp -f ${ASMShell_DIR}/config/${env_file} ${Scripts_DIR}/config/.env
 echo "代码及配置更新完毕..."
