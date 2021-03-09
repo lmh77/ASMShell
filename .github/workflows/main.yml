@@ -19,7 +19,7 @@ jobs:
           imageName: lmhsdocker/asm
           dockerFile: docker/Dockerfile
           platform: linux/amd64,linux/arm64,linux/arm/v7
-          # tag: latest
-          tag: $(date "+%m-%d-%H-%M")
+          tag: latest
+          # tag: $(date "+%m-%d-%H-%M")
           dockerUser: ${{ secrets.DOCKER_USERNAME }}
           dockerPassword: ${{ secrets.DOCKER_PASSWORD }}
