@@ -28,7 +28,7 @@ cd ${Scripts_DIR} && git pull
 ln -sf ${ASMShell_DIR}/docker/all.sh /usr/local/bin/all
 ln -sf ${ASMShell_DIR}/docker/buildcron.sh /usr/local/bin/buildcron
 ln -sf ${ASMShell_DIR}/docker/u.sh /usr/local/bin/u
-ln -sf ${ASMShell_DIR}/docker/start.sh /usr/local/bin/start
+
 
 
 bash buildcron
