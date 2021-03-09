@@ -33,8 +33,8 @@ ln -sf ${ASMShell_DIR}/docker/u.sh /usr/local/bin/u
 bash buildcron
 
 #多账号并发容器指定配置文件
-echo "复制${env_file}配置至.env"
-cp -f ${ASMShell_DIR}/config/${env_file} ${Scripts_DIR}/config/.env
+echo "复制${config_env}配置至.env"
+cp -f ${ASMShell_DIR}/config/${config_env} ${Scripts_DIR}/config/.env
 echo "代码及配置更新完毕..."
 echo "启动完毕..."
 echo "<3>------------------------------------------------------------------------------------------------"
