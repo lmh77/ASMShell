@@ -20,7 +20,7 @@ if [ $1 ]; then
     npm install -s --prefix ${Scripts_DIR} >/dev/null 2>&1
   fi
 fi
-cat /etc/hosts | grep github || echo "13.250.177.223 github" >>/etc/hosts && echo "52.74.223.119 github" >>/etc/hosts
+# cat /etc/hosts | grep github || echo "13.250.177.223 github" >>/etc/hosts && echo "52.74.223.119 github" >>/etc/hosts
 echo "<2>------------------------------------------------------------------------------------------------"
 echo "更新ASM......"
 cd ${Scripts_DIR} && git pull
