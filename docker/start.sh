@@ -6,7 +6,7 @@ if [ $1 ]; then
   if [[ $? -ne 0 ]]; then
     echo "第一次启动容器..."
     echo "下载软件包......."
-    apk update && apk --no-cache add -f coreutils moreutils nodejs npm perl openssl openssh-client libav-tools libjpeg-turbo-dev libpng-dev libtool libgomp tesseract-ocr graphicsmagick >/dev/null 2>&1
+    apk update >/dev/null 2>&1 && apk --no-cache add -f coreutils moreutils nodejs npm perl openssl openssh-client libav-tools libjpeg-turbo-dev libpng-dev libtool libgomp tesseract-ocr graphicsmagick >/dev/null 2>&1
     npm config set registry https://registry.npm.taobao.org
     echo "配置仓库更新密钥..."
     mkdir -p /root/.ssh
