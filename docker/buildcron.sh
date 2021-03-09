@@ -28,7 +28,7 @@ function decide {
   if [ -f "${ASMShell_DIR}/config/crontab.sh" ]; then
     echo "仓库已经存在crontab.sh..."
     diff ${ASMShell_DIR}/config/crontab.sh ${ASMShell_DIR}/config/crontab.sh.sample > /dev/null
-    if [ $0 == 0 ]; then
+    if [ $? == 0 ]; then
         echo "crontab配置文件一致..."
     else
         echo "crontab配置文件不一致..."
