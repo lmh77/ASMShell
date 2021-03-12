@@ -3,7 +3,7 @@ if [ $1 ]; then
   #仅第一次启动拉取代码和依赖
   #后续新增则手动执行相应命令
   # node -v>/dev/null 2>&1
-  ls -l ${Scripts_DIR}/commands
+  ls -l ${Scripts_DIR}/commands>/dev/null 2>&1
   if [[ $? -ne 0 ]]; then
     # echo "第一次启动容器..."
     # echo "下载软件包......."
