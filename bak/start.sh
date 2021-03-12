@@ -2,13 +2,11 @@
 if [ $1 ]; then
   #仅第一次启动拉取代码和依赖
   #后续新增则手动执行相应命令
-  # node -v>/dev/null 2>&1
-  ls -l ${Scripts_DIR}/commands
+  node -v>/dev/null 2>&1
   if [[ $? -ne 0 ]]; then
-    # echo "第一次启动容器..."
-    # echo "下载软件包......."
-    # apk update >/dev/null 2>&1 && apk --no-cache add -f coreutils moreutils nodejs npm perl openssl openssh-client libav-tools libjpeg-turbo-dev libpng-dev libtool libgomp tesseract-ocr graphicsmagick >/dev/null 2>&1
-    rm -rf ${Scripts_DIR}
+    echo "第一次启动容器..."
+    echo "下载软件包......."
+    apk update >/dev/null 2>&1 && apk --no-cache add -f coreutils moreutils nodejs npm perl openssl openssh-client libav-tools libjpeg-turbo-dev libpng-dev libtool libgomp tesseract-ocr graphicsmagick >/dev/null 2>&1
     npm config set registry https://registry.npm.taobao.org
     echo "配置仓库更新密钥..."
     mkdir -p /root/.ssh
