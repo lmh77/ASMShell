@@ -1,7 +1,7 @@
 
 name: "构建"
 on:
-  push:
+  # push:
   workflow_dispatch:
 jobs:
   build:
