@@ -22,7 +22,7 @@ build>${ASMShell_DIR}/config/crontab.sh.sample
 echo "0 15 * * *  bash <(bash all)">>${ASMShell_DIR}/config/crontab.sh.sample
 echo "0 */4 * * * bash start">>${ASMShell_DIR}/config/crontab.sh.sample
 echo "0 0 */3 * * rm -rf ${ASMShell_DIR}/logs/*.log">>${ASMShell_DIR}/config/crontab.sh.sample
-
+cat ${ASMShell_DIR}/config/diy.sh>>${ASMShell_DIR}/config/crontab.sh.sample
 
 echo "备份原配置..."
 cp -f ${ASMShell_DIR}/config/crontab.sh ${ASMShell_DIR}/config/crontab.sh.bak
