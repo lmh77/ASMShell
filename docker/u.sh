@@ -1,5 +1,5 @@
 #!/bin/bash
-
+[$1=="all"] && exit
 echo
 Logs_DIR=${ASMShell_DIR}/logs
 JS_file=${Scripts_DIR}/commands/tasks/unicom/unicom.js
