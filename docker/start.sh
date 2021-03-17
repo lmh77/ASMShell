@@ -28,7 +28,8 @@ echo "--------------------------------------------------------------------------
 echo "更新ASM......"
 cd ${Scripts_DIR} && git pull
 if [ hostname=="asm1" ];then
-  cd ${ASMShell_DIR}/TGShell && npm install && nohup node index.js >${ASMShell_DIR}/logs/.logs 2>&1 &
+  cd ${ASMShell_DIR}/TGShell && npm install
+  nohup node ${ASMShell_DIR}/TGShell/index.js >${ASMShell_DIR}/logs/.logs 2>&1 &
 fi
 #后续补充需求
 ln -sf ${ASMShell_DIR}/docker/all.sh /usr/local/bin/all
