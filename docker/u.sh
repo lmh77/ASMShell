@@ -11,18 +11,14 @@ function Run {
     node ${Scripts_DIR}/index.js unicom --tasks $1 --tryrun |tee ${Logs_DIR}/$1.log
     echo
     }
-    
-case $# in
-  0)
-    echo "请重新输入！"
-    ;;
-  1)
-    echo "${Taskarray[@]}" | grep -wq "$1" \
-    &&  echo "即将执行任务..." && Run $1 \
-    ||  echo "不存在此任务..."
-    ;;
-  *)
-    echo -e "输入命令过多..."
-    ;;
-esac
+if [ -n "$2" ]; then
+  echo "输入命令过多..."
+else
+  if [ ! -n "$1" ]; then
+    echo "请输入任务名..."
+  else
+    echo all | grep -wq "$1" &&  echo "执行全部任务..." && bash <(bash all) && exit
+    echo "${Taskarray[@]}" | grep -wq "$1" &&  echo "即将执行任务..." && Run $1 ||  echo "不存在此任务..."
+  fi
+fi
 echo
