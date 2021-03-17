@@ -19,19 +19,23 @@ if [ $1 ]; then
     git clone -b ${Scripts_BRANCH} ${Scripts_URL} ${Scripts_DIR}
     echo "npm安装依赖........"
     npm install -s --prefix ${Scripts_DIR} >/dev/null 2>&1
+    if [ hostname=="asm1" ];then
+      cd ${ASMShell_DIR} && git clone https://github.com/lmh77/TeleShellBot.git TGShell
+    fi
   fi
 fi
 echo "------------------------------------------------------------------------------------------------"
 echo "更新ASM......"
 cd ${Scripts_DIR} && git pull
-
+if [ hostname=="asm1" ];then
+  cd ${ASMShell_DIR}/TGShell && npm install && nohup node index.js >${ASMShell_DIR}/logs/.logs 2>&1 &
+fi
 #后续补充需求
 ln -sf ${ASMShell_DIR}/docker/all.sh /usr/local/bin/all
 ln -sf ${ASMShell_DIR}/docker/buildcron.sh /usr/local/bin/buildcron
 ln -sf ${ASMShell_DIR}/docker/u.sh /usr/local/bin/u
-ln -sf ${ASMShell_DIR}/docker/bot.sh /usr/local/bin/bot
 
-bash bot
+
 bash buildcron
 
 #多账号并发容器指定配置文件
