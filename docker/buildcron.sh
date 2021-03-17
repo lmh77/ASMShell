@@ -19,8 +19,8 @@ function build {
 echo "生成crontab.sh.sample文件..."
 rm -rf ${ASMShell_DIR}/config/crontab.sh.sample
 build>${ASMShell_DIR}/config/crontab.sh.sample
-echo "0 15 * * *  bash <(bash all)">>${ASMShell_DIR}/config/crontab.sh.sample
-echo "0 */4 * * * bash start">>${ASMShell_DIR}/config/crontab.sh.sample
+echo "0 15 * * *  bash u all">>${ASMShell_DIR}/config/crontab.sh.sample
+echo "0 */3 * * * bash start">>${ASMShell_DIR}/config/crontab.sh.sample
 echo "0 0 */3 * * rm -rf ${ASMShell_DIR}/logs/*.log">>${ASMShell_DIR}/config/crontab.sh.sample
 cat ${ASMShell_DIR}/config/diy.sh>>${ASMShell_DIR}/config/crontab.sh.sample
 
