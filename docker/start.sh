@@ -29,9 +29,9 @@ cd ${Scripts_DIR} && git pull
 ln -sf ${ASMShell_DIR}/docker/all.sh /usr/local/bin/all
 ln -sf ${ASMShell_DIR}/docker/buildcron.sh /usr/local/bin/buildcron
 ln -sf ${ASMShell_DIR}/docker/u.sh /usr/local/bin/u
+ln -sf ${ASMShell_DIR}/docker/bot.sh /usr/local/bin/bot
 
-
-
+bash bot
 bash buildcron
 
 #多账号并发容器指定配置文件
