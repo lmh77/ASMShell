@@ -25,7 +25,7 @@ function build {
     fi
   done
   echo "0 15 * * *  bash u all" >> ${ASMShell_DIR}/config/crontab.sh
-  echo "0 */3 * * * bash start >>${ASMShell_DIR}/logs/pull.txt" >> ${ASMShell_DIR}/config/crontab.sh
+  echo "0 */3 * * * bash start >>${ASMShell_DIR}/logs/.pull" >> ${ASMShell_DIR}/config/crontab.sh
   cat ${ASMShell_DIR}/config/diy.sh >> ${ASMShell_DIR}/config/crontab.sh
 }
 echo "生成crontab.sh文件..."
