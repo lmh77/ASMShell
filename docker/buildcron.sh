@@ -14,7 +14,8 @@ function build {
       hour=8
     fi
     echo "$min $hour * * * bash u ${Taskarray[$i]}"  >> ${ASMShell_DIR}/config/crontab.sh
-    if [ -n $(crontab -l | grep ${Taskarray[$i]}) ];then
+    crontab -l | grep ${Taskarray[$i]} > /dev/null 2>&1 &
+    if [[ $? -ne 0 ]];then
       n_hour="`date +%H`"
       n_minute=$(expr "`date +%M`" + 10)
       echo "新增任务  ${Taskarray[$i]}"
