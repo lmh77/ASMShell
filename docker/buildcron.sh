@@ -14,12 +14,14 @@ function build {
       hour=8
     fi
     echo "$min $hour * * * bash u ${Taskarray[$i]}"  >> ${ASMShell_DIR}/config/crontab.sh
-    Task=${Taskarray[$i]}
-    if [ -z "$(crontab -l | grep $Task)" ];then
-      n_hour="`date +%H`"
-      n_minute=$(expr "`date +%M`" + 10)
-      echo "新增任务  ${Taskarray[$i]}"
-      echo "$n_minute $n_hour * * * bash u ${Taskarray[$i]}"  >> ${ASMShell_DIR}/config/crontab.sh
+    if [ ! $startup ];then
+      Task=${Taskarray[$i]}
+      if [ -z "$(crontab -l | grep $Task)" ];then
+        n_hour="`date +%H`"
+        n_minute=$(expr "`date +%M`" + 10)
+        echo "新增任务  ${Taskarray[$i]}"
+        echo "$n_minute $n_hour * * * bash u ${Taskarray[$i]}"  >> ${ASMShell_DIR}/config/crontab.sh
+      fi
     fi
   done
   echo "0 15 * * *  bash u all" >> ${ASMShell_DIR}/config/crontab.sh
@@ -27,6 +29,9 @@ function build {
   cat ${ASMShell_DIR}/config/diy.sh >> ${ASMShell_DIR}/config/crontab.sh
 }
 echo "生成crontab.sh文件..."
+if [ ! -f ${ASMShell_DIR}/config/crontab.sh ];then
+ startup=1
+fi
 echo '' >${ASMShell_DIR}/config/crontab.sh
 build
 echo "写入crontab..."
