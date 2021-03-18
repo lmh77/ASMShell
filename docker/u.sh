@@ -8,7 +8,7 @@ function Run {
     Line=$(sed -n "/\"$1\"/=" ${JS_file})
     cat ${JS_file} | sed -n $(($Line-3)),$(($Line-2))p | grep \/\/ | sed 's/[ \t]*//g'|sed 's/[\/\/\t]*//g'
     echo 
-    node ${Scripts_DIR}/index.js unicom --tasks $1 --tryrun |tee ${Logs_DIR}/$1.log
+    date;node ${Scripts_DIR}/index.js unicom --tasks $1 --tryrun |tee ${Logs_DIR}/$1.log
     echo
     }
 if [ -n "$2" ]; then
