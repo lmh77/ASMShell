@@ -17,7 +17,7 @@ else
   if [ ! -n "$1" ]; then
     echo "请输入任务名..."
   else
-    echo all | grep -wq "$1" &&  echo "执行全部任务..." && node ${Scripts_DIR}/index.js unicom --tasks $(cat ${JS_file} | sed '/\/\*\*\*/,/\*\*\*\//d' | sed '/\/\*/,/\*\//d'|sed '/\/\//d' | grep -oE "\"[a-z A-Z0-9]+\""| cut -f2 -d\"|tr "\n" ",") --tryrun > ${Logs_DIR}/All.txt && exit
+    echo all | grep -wq "$1" &&  echo "执行全部任务..." && node ${Scripts_DIR}/index.js unicom --tasks $(cat ${JS_file} | sed '/\/\*\*\*/,/\*\*\*\//d' | sed '/\/\*/,/\*\//d'|sed '/\/\//d' | grep -oE "\"[a-z A-Z0-9]+\""| cut -f2 -d\"|tr "\n" ",") --tryrun > ${Logs_DIR}/.All && exit
     echo "${Taskarray[@]}" | grep -wq "$1" &&  echo "即将执行任务..." && Run $1 ||  echo "不存在此任务..."
   fi
 fi
