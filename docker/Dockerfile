@@ -17,8 +17,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && echo "Asia/Shanghai" > /etc/timezone \
     && git config --global pull.ff only \
     && git clone -b ${ASMShell_BRANCH} ${ASMShell_URL} ${ASMShell_DIR} \
-    && ln -sf ${ASMShell_DIR}/docker/start.sh /usr/local/bin/start \
-    && cp -f ${ASMShell_DIR}/docker/entrypoint.sh /usr/local/bin/entrypoint.sh \
+    && ln -sf ${ASMShell_DIR}/start.sh /usr/local/bin/start \
+    && cp -f ${ASMShell_DIR}/entrypoint.sh /usr/local/bin/entrypoint.sh \
     && chmod 777 /usr/local/bin/entrypoint.sh
 
 WORKDIR ${ASMShell_DIR}
