@@ -91,6 +91,8 @@ function Build_Cron() {
 [ -d ${Scripts_DIR}/.git ] && PullScripts || CloneScripts
 Npm_Install
 Build_Cron
+echo "复制${config_env}配置至.env"
+ln -sf ${ASMShell_DIR}/config/${config_env} ${Scripts_DIR}/config/.env
 echo "所有配置及脚本更新完毕..."
 echo "------------------------------------------------------------------------------------------------"
 ln -sf ${ASMShell_DIR}/u.sh /usr/local/bin/u
