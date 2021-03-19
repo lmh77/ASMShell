@@ -93,4 +93,4 @@ Npm_Install
 Build_Cron
 echo "所有配置及脚本更新完毕..."
 echo "------------------------------------------------------------------------------------------------"
-ln -sf ${ASMShell_DIR}/docker/u.sh /usr/local/bin/u
+ln -sf ${ASMShell_DIR}/u.sh /usr/local/bin/u
