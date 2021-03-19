@@ -9,8 +9,7 @@ set -e
 echo "------------------------------------------------------------------------------------------------"
 echo "更新ASMShell..."
 cd ${ASMShell_DIR} && git reset --hard && git pull
-crond
 echo "启动start..."
 bash start
-echo
+/usr/sbin/crond -S -c /var/spool/cron/crontabs -f -L /dev/stdout
 
