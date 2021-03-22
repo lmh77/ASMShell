@@ -65,10 +65,11 @@ function Build_Cron() {
                     n_hour="$(date +%H)"
                     n_minute=$(expr "$(date +%M)" + 10)
                     echo "新增任务  ${Taskarray[$i]}"
-                    echo "$n_minute $n_hour * * * bash u ${Taskarray[$i]}" >>${ASMShell_DIR}/config/`hostname`_crontab.sh
+#                     echo "$n_minute $n_hour * * * bash u ${Taskarray[$i]}" >>${ASMShell_DIR}/config/`hostname`_crontab.sh
                 fi
             fi
         done
+        echo "0 0 */2 * *  rm -rf ${ASMShell_DIR}/config/*.log" >>${ASMShell_DIR}/config/`hostname`_crontab.sh
         echo "0 15 * * *  bash u all" >>${ASMShell_DIR}/config/`hostname`_crontab.sh
         echo "0 */3 * * * bash start >>${ASMShell_DIR}/logs/.start.txt" >>${ASMShell_DIR}/config/`hostname`_crontab.sh
         if [ $diycron ]; then
