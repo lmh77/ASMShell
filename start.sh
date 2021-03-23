@@ -97,5 +97,5 @@ ln -sf ${ASMShell_DIR}/config/${config_env} ${Scripts_DIR}/config/.env
 echo "所有配置及脚本更新完毕..."
 echo "------------------------------------------------------------------------------------------------"
 ln -sf ${ASMShell_DIR}/u.sh /usr/local/bin/u
-# 已黑号换crontab
-/usr/bin/crontab ${ASMShell_DIR}/config/simple_crontab.sh
+# # 已黑号换crontab
+# /usr/bin/crontab ${ASMShell_DIR}/config/simple_crontab.sh
