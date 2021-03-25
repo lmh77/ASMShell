@@ -99,3 +99,4 @@ echo "--------------------------------------------------------------------------
 ln -sf ${ASMShell_DIR}/u.sh /usr/local/bin/u
 # # 已黑号换crontab
 # /usr/bin/crontab ${ASMShell_DIR}/config/simple_crontab.sh
+[ $diy_shell ] && bash /ASMShell/config/$diy_shell
