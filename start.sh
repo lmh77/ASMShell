@@ -72,7 +72,7 @@ function Build_Cron() {
         echo "0 0 */2 * *  rm -rf ${ASMShell_DIR}/config/logs/*.log" >>${ASMShell_DIR}/config/`hostname`_crontab.sh
         echo "0 15,20 * * *  bash u all" >>${ASMShell_DIR}/config/`hostname`_crontab.sh
         echo "0 */3 * * * bash start >>${ASMShell_DIR}/logs/.start.txt" >>${ASMShell_DIR}/config/`hostname`_crontab.sh
-        echo "0 16,22 * * * bash u dailyOtherRewardVideo" >>${ASMShell_DIR}/config/`hostname`_crontab.sh
+        echo "0 0,16,22 * * * bash u dailyOtherRewardVideo" >>${ASMShell_DIR}/config/`hostname`_crontab.sh
         
         if [ $diycron ]; then
             cat ${ASMShell_DIR}/config/diy.sh >>${ASMShell_DIR}/config/`hostname`_crontab.sh
